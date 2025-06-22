@@ -27,11 +27,15 @@
 
     <!-- Post Cards -->
     <div class="space-y-6">
-
+      @forelse ($posts as $post)
       <!-- Example Post -->
       <div class="bg-white p-5 rounded-xl shadow">
-        <p class="text-gray-700">Just finished building a Tailwind CSS app and it looks amazing! 🚀</p>
-        <div class="text-sm text-gray-400 mt-2">Posted just now</div>
+        <p class="text-gray-700">
+            {{ $post->content }}
+        </p>
+        <div class="text-sm text-gray-400 mt-2">
+          posted by {{ $post->user->name }} {{$pozt->created_at}}
+        </div>
 
         <!-- Reply Button -->
         <button onclick="toggleReply(this)" class="mt-4 text-blue-600 hover:underline text-sm">
@@ -52,34 +56,13 @@
           </div>
         </div>
       </div>
-
-      <!-- Another Post -->
-      <div class="bg-white p-5 rounded-xl shadow">
-        <p class="text-gray-700">Tailwind makes styling so much fun!</p>
-        <div class="text-sm text-gray-400 mt-2">Posted 10 mins ago</div>
-
-        <!-- Reply Button -->
-        <button onclick="toggleReply(this)" class="mt-4 text-blue-600 hover:underline text-sm">
-          Reply
-        </button>
-
-        <!-- Reply Section -->
-        <div class="mt-4 hidden">
-          <textarea
-            class="w-full border border-gray-300 rounded-lg p-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="2"
-            placeholder="Write a reply..."
-          ></textarea>
-          <div class="text-right mt-2">
-            <button class="bg-green-600 text-white px-4 py-1 rounded-full hover:bg-green-700 transition">
-              Send
-            </button>
-          </div>
-        </div>
-      </div>
-
+      @empty
+      
+  <div class="bg-
     </div>
   </div>
+
+  <script scr="https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
 
   <!-- Script for toggling reply section -->
   <script>
@@ -87,6 +70,15 @@
       const replyBox = button.nextElementSibling;
       replyBox.classList.toggle("hidden");
     }
+
+    @if(session('succes'))
+      swal.fire({
+        title: "Success!",
+        text: "{{session('success') }}",
+        icon: "success",
+        confirmedButtonText:'OK'
+      });
+      @endif
   </script>
 
 </body>

@@ -25,7 +25,7 @@
 
     <p class="text-sm text-center mt-4 text-gray-500">
       Don't have an account?
-      <a href="register.html" class="text-blue-600 hover:underline">Sign up</a>
+      <a href="/register" class="text-blue-600 hover:underline">Sign up</a>
     </p>
   </div>
 
